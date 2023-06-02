@@ -631,7 +631,8 @@ endif
 # Defaults to vmlinux, but the arch makefile usually adds further targets
 all: vmlinux
 
-CFLAGS_GCOV	:= -fprofile-arcs -ftest-coverage \
+# Also pass flags to the linker
+CFLAGS_GCOV	:= -Wl,--coverage --coverage \
 	$(call cc-option,-fno-tree-loop-im) \
 	$(call cc-disable-warning,maybe-uninitialized,)
 export CFLAGS_GCOV
