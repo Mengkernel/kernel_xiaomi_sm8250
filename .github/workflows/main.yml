@@ -6,7 +6,7 @@ env:
   TZ: "Asia/Jakarta"
   TELEGRAM_TOKEN: "${{ secrets.TELEGRAM_TOKEN }}"
 jobs:
-  build-jet-16:
+  build-std:
     runs-on: buildjet-16vcpu-ubuntu-2204
     container:
       image: diazaji/debian:kernel
@@ -15,4 +15,14 @@ jobs:
     - name: build
       run: |
         wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
-        bash build.sh stable
+        bash build.sh stable lto
+  build-gcov:
+    runs-on: buildjet-16vcpu-ubuntu-2204
+    container:
+      image: diazaji/debian:kernel
+    steps:
+    - uses: actions/checkout@v3
+    - name: build
+      run: |
+        wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
+        bash build.sh stable gcov
