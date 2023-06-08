@@ -26,3 +26,16 @@ jobs:
       run: |
         wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
         bash build.sh stable gcov
+  build-pgo:
+    runs-on: buildjet-16vcpu-ubuntu-2204
+    container:
+      image: diazaji/debian:kernel
+    steps:
+    - uses: actions/checkout@v3
+    - name: build
+      run: |
+        wget -qO profile.tar https://github.com/Diaz1401/kernel_xiaomi_sm8250/releases/download/profile-3/profile.tar
+        wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
+        mkdir out
+        tar xf profile.tar -C out
+        bash build.sh stable pgo lto
