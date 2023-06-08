@@ -5,7 +5,8 @@
 
 ccflags-y += -fno-stack-protector -DDISABLE_BRANCH_PROFILING \
 		$(DISABLE_STACKLEAK_PLUGIN) \
-		$(DISABLE_CFI)
+		$(DISABLE_CFI) \
+		$(DISABLE_PGO)
 
 ifeq ($(cc-name),clang)
 ccflags-y += -fno-jump-tables
@@ -36,4 +37,4 @@ UBSAN_SANITIZE	:= n
 KCOV_INSTRUMENT	:= n
 
 # remove the SCS flags from all objects in this directory
-KBUILD_CFLAGS := $(filter-out $(CC_FLAGS_SCS), $(KBUILD_CFLAGS))
+KBUILD_CFLAGS := $(filter-out $(CC_FLAGS_SCS), $(KBUILD_CFLAGS)) $(DISABLE_PGO)
