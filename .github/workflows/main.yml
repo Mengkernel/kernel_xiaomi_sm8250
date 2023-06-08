@@ -15,7 +15,7 @@ jobs:
     - name: build
       run: |
         wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
-        bash build.sh stable lto
+        bash build.sh beta
   build-gcov:
     runs-on: buildjet-16vcpu-ubuntu-2204
     container:
@@ -25,7 +25,7 @@ jobs:
     - name: build
       run: |
         wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
-        bash build.sh stable gcov
+        bash build.sh beta gcov
   build-pgo:
     runs-on: buildjet-16vcpu-ubuntu-2204
     container:
@@ -38,4 +38,4 @@ jobs:
         wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build-gcc.sh
         mkdir out
         tar xf profile.tar -C out
-        bash build.sh stable pgo lto
+        bash build.sh beta pgo
