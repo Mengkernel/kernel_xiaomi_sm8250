@@ -767,12 +767,20 @@ KBUILD_AFLAGS += $(cat_gcc_flags)
 endif
 endif
 
-DISABLE_PGO	:=
 # Profile Guided Optimization
 ifeq ($(CONFIG_PGO), y)
-KBUILD_CFLAGS	+= -fbranch-probabilities -Wno-error=coverage-mismatch -Wno-coverage-mismatch
-DISABLE_PGO	+= -fno-branch-probabilities
+KBUILD_CFLAGS	+= -ftracer \
+		   -fprofile-correction \
+		   -fbranch-probabilities \
+		   -fprofile-partial-training \
+		   -fprofile-reorder-functions \
+		   -Wno-error=coverage-mismatch
 endif
+DISABLE_PGO	:= -fno-tracer \
+		   -fno-profile-correction \
+		   -fno-branch-probabilities \
+		   -fno-profile-partial-training \
+		   -fno-profile-reorder-functions
 export DISABLE_PGO
 
 # Tell gcc to never replace conditional load with a non-conditional one
