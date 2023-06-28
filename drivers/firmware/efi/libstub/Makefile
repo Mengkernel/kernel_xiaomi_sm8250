@@ -30,7 +30,8 @@ KBUILD_CFLAGS			:= $(cflags-y) -DDISABLE_BRANCH_PROFILING \
 				   $(call cc-option,-fno-stack-protector) \
 				   $(call cc-option,-fno-addrsig) \
 				   -D__DISABLE_EXPORTS \
-				   $(DISABLE_LTO)
+				   $(DISABLE_LTO) \
+				   $(DISABLE_PGO)
 
 GCOV_PROFILE			:= n
 KASAN_SANITIZE			:= n
