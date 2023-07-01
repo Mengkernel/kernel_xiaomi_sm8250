@@ -13,4 +13,4 @@ task:
   only_if: $CIRRUS_BRANCH == 'kucing-13-rebase'
   script:
     - wget -qO build.sh https://raw.githubusercontent.com/Diaz1401/build-script/alioth/build.sh
-    - bash build.sh gcc stable opt
+    - bash build.sh gcc stable opt gcov

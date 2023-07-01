@@ -1,0 +1,18 @@
+name: CI
+on:
+  push:
+    branches: [ "kucing-13-rebase" ]
+env:
+  TZ: "Asia/Jakarta"
+  TELEGRAM_TOKEN: "${{ secrets.TELEGRAM_TOKEN }}"
+  GCC_IGNORE_WERROR: true
+jobs:
+  build-gcc:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: build
+      run: |
+        wget -qO build.sh https://raw.githubusercontent.com/Mengkernel/build-script/alioth/build.sh
+        bash build.sh gcc stable opt gcov
+
