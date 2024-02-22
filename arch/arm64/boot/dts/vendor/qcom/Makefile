@@ -1,73 +1,76 @@
 kona_base_dtb := kona-v2.1.dtb
-ifeq ($(CONFIG_BOARD_XIAOMI),y)
 
-ifeq ($(CONFIG_BOARD_XIAOMI_SM8250),y)
+ifeq ($(CONFIG_MACH_XIAOMI),y)
+
+ifeq ($(CONFIG_MACH_XIAOMI_SM8250),y)
+
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 
-ifeq ($(CONFIG_BOARD_ALIOTH),y)
+ifeq ($(CONFIG_MACH_XIAOMI_ALIOTH),y)
 dtbo-y += alioth-sm8250-overlay.dtbo
 alioth-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_APOLLO),y)
+ifeq ($(CONFIG_MACH_XIAOMI_APOLLO),y)
 dtbo-y += apollo-sm8250-overlay.dtbo
 apollo-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_CAS),y)
+ifeq ($(CONFIG_MACH_XIAOMI_CAS),y)
 dtbo-y += cas-sm8250-overlay.dtbo
 cas-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_CMI),y)
+ifeq ($(CONFIG_MACH_XIAOMI_CMI),y)
 dtbo-y += cmi-sm8250-overlay.dtbo
 cmi-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_DAGU),y)
+ifeq ($(CONFIG_MACH_XIAOMI_DAGU),y)
 dtbo-y += dagu-sm8250-overlay.dtbo
 dagu-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_ENUMA),y)
+ifeq ($(CONFIG_MACH_XIAOMI_ENUMA),y)
 dtbo-y += enuma-sm8250-overlay.dtbo
 enuma-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_ELISH),y)
+ifeq ($(CONFIG_MACH_XIAOMI_ELISH),y)
 dtbo-y += elish-sm8250-overlay.dtbo
 elish-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_LMI),y)
+ifeq ($(CONFIG_MACH_XIAOMI_LMI),y)
 dtbo-y += lmi-sm8250-overlay.dtbo
 lmi-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_MUNCH),y)
+ifeq ($(CONFIG_MACH_XIAOMI_MUNCH),y)
 dtbo-y += munch-sm8250-overlay.dtbo
 munch-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_PSYCHE),y)
+ifeq ($(CONFIG_MACH_XIAOMI_PSYCHE),y)
 dtbo-y += psyche-sm8250-overlay.dtbo
 psyche-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_THYME),y)
+ifeq ($(CONFIG_MACH_XIAOMI_THYME),y)
 dtbo-y += thyme-sm8250-overlay.dtbo
 thyme-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
-ifeq ($(CONFIG_BOARD_UMI),y)
+ifeq ($(CONFIG_MACH_XIAOMI_UMI),y)
 dtbo-y += umi-sm8250-overlay.dtbo
 umi-sm8250-overlay.dtbo-base := $(kona_base_dtb)
 endif
 
 endif # CONFIG_BUILD_ARM64_DT_OVERLAY
-endif # CONFIG_BOARD_XIAOMI_SM8250
 
-else # CONFIG_BOARD_XIAOMI
+endif # CONFIG_MACH_XIAOMI_SM8250
+
+else # CONFIG_MACH_XIAOMI
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
         dtbo-$(CONFIG_ARCH_KONA) += \
@@ -582,7 +585,7 @@ dtb-$(CONFIG_ARCH_SDM429) += sdm429-mtp.dtb \
 	sda429-cdp.dtb
 endif
 
-endif # CONFIG_BOARD
+endif # CONFIG_MACH_XIAOMI
 
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
