@@ -656,8 +656,8 @@ lto-gcc-flags	:= -flto=$(NPROC) -fdevirtualize-at-ltrans
 LTO_LDFLAGS	:= $(lto-gcc-flags) -Wno-lto-type-mismatch -Wno-psabi \
 		   -Wno-stringop-overflow -flinker-output=nolto-rel
 LDFINAL		:= $(CONFIG_SHELL) $(srctree)/scripts/gcc-ld $(LTO_LDFLAGS)
-#AR		:= $(CROSS_COMPILE)gcc-ar
-#NM		:= $(CROSS_COMPILE)gcc-nm
+AR		:= $(CROSS_COMPILE)gcc-ar
+NM		:= $(CROSS_COMPILE)gcc-nm
 DISABLE_LTO_GCC	:= -fno-lto
 export DISABLE_LTO_GCC LDFINAL
 else
